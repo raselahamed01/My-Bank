@@ -63,7 +63,7 @@
                     <h4>Withdraw</h4>
                     <input id="withdrawAmount" type="text" class="form-control" placeholder="$ amount you want to Withdraw">
                     <br>
-                    <button id="outWithdraw" class="btn btn-success">Withdraw</button>
+                    <button id="addWithdraw" class="btn btn-success">Withdraw</button>
                 </div>
             </div>
         </div>
@@ -84,58 +84,47 @@
         // Deposit btn Listener
         const depositBtn = document.getElementById("addDeposit");
         depositBtn.addEventListener("click", function(){    
-            const depositNumber = getInputNumber("depositAmount") ; 
-
+            const depositNumber = getInputNumber("depositAmount");
+            
  
-           updateSpanText("cruntDeposit", depositNumber);
-           updateSpanText("cruntBlance", depositNumber);
+             upDateSpanText("cruntDeposit",depositNumber)      
+             upDateSpanText("cruntBlance",depositNumber);
+            
+             document.getElementById("depositAmount").value = "";
 
-           document.getElementById("depositAmount").value = "";
-
-
-        // Withdraw btn Listener
-        const withdrawBtn = document.getElementById("outWithdraw");
-        withdrawBtn.addEventListener("click", function(){
-              const withdrawNumber = getInputNumber("withdrawAmount") ;
-              console.log(withdrawNumber);
-        })
-
-        function getInputNumber(id){
-             const amount = document.getElementById(id).value ;
-             const amountNumber = parseFloat(amount);
-             return amountNumber ;
-        }
-
-
-
-        updateSpanText("cruntBlance", withdrawNumber)
-
-        
-
-
-            function updateSpanText(id,depositNumber) {
-                const crunt = document.getElementById(id).innerText;
-                const cruntNumber = parseFloat(crunt);
-                 const totalCrunt = depositNumber + cruntNumber ;
-                 document.getElementById(id).innerText = totalCrunt ;
-            }
                 
         }) ;
 
- 
-        // const withdrawBtn = document.getElementById("outWithdraw");
-        // withdrawBtn.addEventListener("click", function(){
- 
-        //      const withdrawAmount = document.getElementById("withdrawAmount").value ;
-        //      const withdrawNumber = parseFloat(withdrawAmount);
+         // Deposit btn Listener
+         
+         const withdrawBtn = document.getElementById("addWithdraw");
+         withdrawBtn.addEventListener("click", function(){
+            const WithdrawNumber = getInputNumber("withdrawAmount");
+            console.log(WithdrawNumber);
+             
+         })
 
-        //      const cruntWithdraw = document.getElementById("cruntWithdraw").innerText;
-        //      const cruntWithdrawNumber = parseFloat(cruntWithdraw);
+         function getInputNumber(id) {
+            const Amount = document.getElementById(id).value;
+            const amountNumber = parseFloat(Amount);
+            return amountNumber ;
+         }
 
-        //      const totalWithdraw = withdrawNumber + cruntWithdrawNumber ;
-        //      document.getElementById("cruntWithdraw").innerText = totalWithdraw ;
 
-        //      document.getElementById("withdrawAmount").value = "";
+
+           function upDateSpanText(id,depositNumber){
+
+            const crunt = document.getElementById(id).innerHTML;
+            const cruntNumber = parseFloat(crunt);
+            const totalAmount = depositNumber + cruntNumber ;
+
+            document.getElementById(id).innerHTML = totalAmount ;
+          }
+
+
+
+           
+        
  
 
     </script>
